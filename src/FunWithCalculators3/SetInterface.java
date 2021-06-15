@@ -1,5 +1,5 @@
 package FunWithCalculators3;
 
-public interface SetInterface {
+public interface SetInterface<E> {
 
 }
