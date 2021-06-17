@@ -7,6 +7,6 @@ public class EmptySetException extends Exception {
 	private static final long serialVersionUID = -9162791177362385299L;
 
 	public EmptySetException(String message) {
-        super(message);
+        super(message); 
     }
 }

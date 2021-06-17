@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,8 +25,12 @@ class CalcEngineSetTest {
 
 	@Test
 	void test1() {
-		String setAString = "1, 4, 6, 8";
-		assertEquals(1, 4, 6, 8, engine.parseStringToSet(setAString));
+		String setAString = "1,4,6,8";
+		assertEquals(new HashSet<>(Arrays.asList(1,4,6,8)), engine.parseStringToSet(setAString));
+	} 
+	
+	void test2() {
+		
 	}
 
 }

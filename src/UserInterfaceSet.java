@@ -41,8 +41,7 @@ public class UserInterfaceSet implements ActionListener{
 	        contentPane.add(textPanel, BorderLayout.NORTH);
         
         JPanel buttonPanel = new JPanel(new GridLayout(2, 4));
-	        JButton union = new JButton("Union");
-	        buttonPanel.add(union);
+	        addButton(buttonPanel, "Union");
 	        addButton(buttonPanel, "Subtraction");
 	        addButton(buttonPanel, "Intersection");
 	        addButton(buttonPanel, "Clear All");
@@ -70,22 +69,27 @@ public class UserInterfaceSet implements ActionListener{
     {
         JButton button = new JButton(buttonText);
         button.addActionListener(this);
-        panel.add(button);
+        panel.add(button); 
     }
 	
+    
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
         
         if(command.equals("Union")) {
-            try {
+			try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				result.setText(calcSet.union().toString());
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            }
+        }
         if(command.equals("Subtraction")) {
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				result.setText(calcSet.subtraction().toString());
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
@@ -94,14 +98,18 @@ public class UserInterfaceSet implements ActionListener{
         }
         if(command.equals("Intersection")) {
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				result.setText(calcSet.intersection().toString());
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         }
-        if(command.equals("Union")) {
+        if(command.equals("Clear All")) {
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				calcSet.clearAll();
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
@@ -110,6 +118,7 @@ public class UserInterfaceSet implements ActionListener{
         }
         if(command.equals("Size set A")) {
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
 				result.setText(calcSet.sizeOfSet(calcSet.setA));
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
@@ -118,6 +127,7 @@ public class UserInterfaceSet implements ActionListener{
         }
         if(command.equals("Size set B")) {
             try {
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				result.setText(calcSet.sizeOfSet(calcSet.setB));
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block

@@ -8,9 +8,21 @@ import java.util.regex.Pattern;
  */
 public class CalcEngineSet extends CalcEngine {
 	
-	Set<String> setA = new HashSet<>();
-	Set<String> setB = new HashSet<>();
-	Set<String> setResult = new HashSet<>();
+	public Set<String> setA = new HashSet<>();
+	public Set<String> setB = new HashSet<>();
+	public Set<String> setResult = new HashSet<>();
+	
+//	public static void main(String[] args) throws EmptySetException {
+//		CalcEngineSet calc = new CalcEngineSet();
+//		setA = calc.parseStringToSet("1,5,7,8,9,11");
+//		System.out.println(setA.toString());
+//		setB = calc.parseStringToSet("3,5,8,12,13,11");
+//		System.out.println(setB.toString()); 
+//		System.out.println("union" + calc.union());
+//		System.out.println("intersection" + calc.intersection());
+//		System.out.println("subtraction" + calc.subtraction());
+//		System.out.println("Size A: " + calc.sizeOfSet(setA));
+//	}
 	
 	public CalcEngineSet() {
 		super();
@@ -98,7 +110,7 @@ public class CalcEngineSet extends CalcEngine {
 		if (setA != null) {
 			setA.clear();
 		} else {
-			throw new EmptySetException("All sets are empty, nothing to be emptied.");
+			throw new EmptySetException("Set A is empty.");
 		}
 	}
 	
@@ -143,7 +155,7 @@ public class CalcEngineSet extends CalcEngine {
 			throw new EmptySetException("All or one of the sets is still empty, nothing to unite.");
 		}
 		
-		return setResult;
+		return setResult; 
 	}
 
 
@@ -170,6 +182,8 @@ public class CalcEngineSet extends CalcEngine {
 	 * 
 	 */
 	public Set<String> intersection() throws EmptySetException {
+		setResult.clear();
+		
 		if (setA != null) {
 			for (String element : setA){
 				if(setB != null) {
