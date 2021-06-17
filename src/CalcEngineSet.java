@@ -3,9 +3,9 @@ import java.util.HashSet;
 
 public class CalcEngineSet<E> extends CalcEngine implements Set<E>{
 	
-	Set<E> setA = new HashSet<E>();
-	Set<E> setB = new HashSet<E>();
-	Set<E> setResult = new HashSet<E>();
+	Set<E> setA = new HashSet<>();
+	Set<E> setB = new HashSet<>();
+	Set<E> setResult = new HashSet<>();
 
 	public CalcEngineSet() {
 		super();

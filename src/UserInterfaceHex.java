@@ -179,7 +179,7 @@ public class UserInterfaceHex extends UserInterface {
 	}
 	
 	//Change (int) displayValue to Hex (String) and capitalizes the letter
-	private void redisplay() {
+	protected void redisplay() {
 		
 		if (h.isSelected()) {
 			display.setText("" + Integer.toHexString(calc.getDisplayValue()).toUpperCase());

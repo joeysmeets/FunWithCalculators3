@@ -164,7 +164,7 @@ public class UserInterface
      * Update the interface display to show the current value of the 
      * calculator.
      */
-    private void redisplay()
+    protected void redisplay()
     {
         display.setText("" + calc.getDisplayValue());
     }
