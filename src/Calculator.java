@@ -8,6 +8,9 @@
  * 
  * @author Alex and n-c0de-r
  * @version 27.05.2021
+ * 
+ * @author Joey and Ruth
+ * @version 
  */
 public class Calculator
 {
