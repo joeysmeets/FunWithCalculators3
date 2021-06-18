@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * @author Joey Smeets and Ruth Wenzel
- * @version 
+ * @version 18.06.2021 
  */
 public class CalcEngineSet extends CalcEngine {
 	
@@ -25,6 +25,7 @@ public class CalcEngineSet extends CalcEngine {
 //		System.out.println("Size A: " + calc.sizeOfSet(setA));
 //	}
 	
+	// Constructor
 	public CalcEngineSet() {
 		super();
 	}
@@ -79,7 +80,8 @@ public class CalcEngineSet extends CalcEngine {
     }
 	
 	/**
-	 * 
+	 * Converts a String into elements by dividing them at commas.
+	 * @param String 
 	 */
 	public Set<String> parseStringToSet(String input){
 		String[] inputArray = input.split(Pattern.quote(","));
@@ -93,7 +95,9 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * 
+	 * Returns the elements inside of a set.
+	 * @param a Set
+	 * @return the amount of elements in a set as a String.
 	 */
 	public String sizeOfSet(Set<String> input) throws EmptySetException {
 		setResult = null;
@@ -105,7 +109,8 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * 
+	 * Clears set A.
+	 * @throws EmptySetException 
 	 */
 	public void clearA() throws EmptySetException {
 		if (setA != null) {
@@ -116,7 +121,8 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * 
+	 * Clears set B.
+	 * @throws EmptySetException 
 	 */
 	public void clearB() throws EmptySetException {
 		if (setB != null) {
@@ -127,7 +133,8 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * 
+	 * Clears all text fields in the interface.
+	 * @throws EmptySetException 
 	 */
 	public void clearAll() throws EmptySetException {
 		clearA();
@@ -141,7 +148,9 @@ public class CalcEngineSet extends CalcEngine {
 	}
 
 	/**
-	 * 
+	 * Combines the elements of two Sets in the result set.
+	 * @return setResult
+	 * @throws EmptySetException 
 	 */
 	public Set<String> union() throws EmptySetException {
 		setResult.clear();
@@ -161,7 +170,9 @@ public class CalcEngineSet extends CalcEngine {
 
 
 	/**
-	 * 
+	 * Takes away the matching elements from set B off set A.
+	 * @return setResult
+	 * @throws EmptySetException 
 	 */
 	public Set<String> subtraction() throws EmptySetException {
 		setResult.clear();
@@ -180,7 +191,9 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * 
+	 * Checks for the martching values and puts them in the return set. 
+	 * @return setResult
+	 * @throws EmptySetException 
 	 */
 	public Set<String> intersection() throws EmptySetException {
 		setResult.clear();
@@ -196,15 +209,5 @@ public class CalcEngineSet extends CalcEngine {
 		} else throw new EmptySetException("SetA is still empty. Both sets need to be filled.");
 		
 		return setResult;
-	}
-
-//	/**
-//	 * 
-//	 */
-//	public Set<E> power(Set<E> setB) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
-	
+	}	
 }

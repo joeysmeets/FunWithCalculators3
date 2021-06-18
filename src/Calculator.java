@@ -10,7 +10,7 @@
  * @version 27.05.2021
  * 
  * @author Joey Smeets and Ruth Wenzel
- * @version 
+ * @version 18.06.2021
  */
 public class Calculator
 {

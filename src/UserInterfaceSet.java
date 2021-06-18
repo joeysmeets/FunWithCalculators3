@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Joey Smeets and Ruth Wenzel
- * @version
+ * @version 18.06.2021
  */
 
 public class UserInterfaceSet implements ActionListener{
@@ -17,21 +17,22 @@ public class UserInterfaceSet implements ActionListener{
     private JTextField result;
 
     private CalcEngineSet calcSet;
-    private JButton union, subtraction, intersection, clearAll, sizeA, sizeB, clearA, clearB;
     private boolean showingAuthor;
     private JFrame frame;
     private JLabel status;
-
     
+    // constructor
 	public UserInterfaceSet(CalcEngineSet engine) {
 		calcSet = engine;
 		makeFrame();
 		frame.setVisible(true);
 	}
 	
+	/**
+	 * Creates the interface and adds the buttons and text fields.
+	 */
 	protected void makeFrame() {
 		frame = new JFrame(calcSet.getTitle());
-//        frame.setMinimumSize(new Dimension(250, 200));
 
         JPanel contentPane = (JPanel) frame.getContentPane();
 	        contentPane.setLayout(new BorderLayout(2, 2));
@@ -76,7 +77,11 @@ public class UserInterfaceSet implements ActionListener{
         panel.add(button); 
     }
 	
-    
+    /**
+     * Takes care of the commands with the according method call. 
+     * @param event (button pressed in this case).
+     * @throws EmptySetException - if a command was called while the required sets are not filled, this exception is thrown.
+     */
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
         
@@ -158,23 +163,12 @@ public class UserInterfaceSet implements ActionListener{
         redisplay();
     }
 	
+	/**
+	 * Redisplays the text fields as a string and removes the square brackets.
+	 */
 	public void redisplay() {
-		inputA.setText("" + calcSet.setA);
-        inputB.setText("" + calcSet.setB);
-        result.setText("" + calcSet.setResult);
+		inputA.setText(calcSet.setA.toString().replace("[","").replace("]",""));
+        inputB.setText(calcSet.setB.toString().replace("[","").replace("]",""));
+        result.setText(calcSet.setResult.toString().replace("[","").replace("]",""));
 	}
-	
-//	/**
-//     * Toggle the info display in the calculator's status area between the
-//     * author and version information.
-//     */
-//    protected void showInfo()
-//    {
-//        if(showingAuthor)
-//            status.setText(calcSet.getVersion());
-//        else
-//            status.setText(calcSet.getAuthor());
-//
-//        showingAuthor = !showingAuthor;
-//    }
 }
