@@ -3,8 +3,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-/*
- * @author joeysmeets, ruthwenzel
+/**
+ * @author Joey Smeets and Ruth Wenzel
+ * @version 
  */
 public class CalcEngineSet extends CalcEngine {
 	
@@ -28,7 +29,7 @@ public class CalcEngineSet extends CalcEngine {
 		super();
 	}
 	
-	/*
+	/**
 	 * setter
 	 * @param A set 
 	 */
@@ -36,7 +37,7 @@ public class CalcEngineSet extends CalcEngine {
 		this.setA = setA;
 	}
 	
-	/*
+	/**
 	 * setter
 	 * @param A set
 	 */
@@ -44,7 +45,7 @@ public class CalcEngineSet extends CalcEngine {
 		this.setB = setB;
 	}
 	
-	/*
+	/**
 	 * setter
 	 * @param A set
 	 */
@@ -52,7 +53,7 @@ public class CalcEngineSet extends CalcEngine {
 		this.setResult = setResult;
 	}
 	
-	/*
+	/**
 	 * getter
 	 * @return setA
 	 */
@@ -60,7 +61,7 @@ public class CalcEngineSet extends CalcEngine {
         return setA;
     }
 	
-	/*
+	/**
 	 * getter
 	 * @return setB
 	 */
@@ -69,7 +70,7 @@ public class CalcEngineSet extends CalcEngine {
     }
 	
 	
-	/*
+	/**
 	 * getter
 	 * @return setResult
 	 */
@@ -77,7 +78,7 @@ public class CalcEngineSet extends CalcEngine {
         return setResult;
     }
 	
-	/*
+	/**
 	 * 
 	 */
 	public Set<String> parseStringToSet(String input){
@@ -91,7 +92,7 @@ public class CalcEngineSet extends CalcEngine {
 		return inputSet;
 	}
 	
-	/*
+	/**
 	 * 
 	 */
 	public String sizeOfSet(Set<String> input) throws EmptySetException {
@@ -103,7 +104,7 @@ public class CalcEngineSet extends CalcEngine {
 		}
 	}
 	
-	/*
+	/**
 	 * 
 	 */
 	public void clearA() throws EmptySetException {
@@ -114,7 +115,7 @@ public class CalcEngineSet extends CalcEngine {
 		}
 	}
 	
-	/*
+	/**
 	 * 
 	 */
 	public void clearB() throws EmptySetException {
@@ -125,7 +126,7 @@ public class CalcEngineSet extends CalcEngine {
 		}
 	}
 	
-	/*
+	/**
 	 * 
 	 */
 	public void clearAll() throws EmptySetException {
@@ -139,7 +140,7 @@ public class CalcEngineSet extends CalcEngine {
 		}
 	}
 
-	/*
+	/**
 	 * 
 	 */
 	public Set<String> union() throws EmptySetException {
@@ -159,7 +160,7 @@ public class CalcEngineSet extends CalcEngine {
 	}
 
 
-	/*
+	/**
 	 * 
 	 */
 	public Set<String> subtraction() throws EmptySetException {
@@ -178,7 +179,7 @@ public class CalcEngineSet extends CalcEngine {
 		return setResult;
 	}
 	
-	/*
+	/**
 	 * 
 	 */
 	public Set<String> intersection() throws EmptySetException {
@@ -197,7 +198,7 @@ public class CalcEngineSet extends CalcEngine {
 		return setResult;
 	}
 
-//	/*
+//	/**
 //	 * 
 //	 */
 //	public Set<E> power(Set<E> setB) {

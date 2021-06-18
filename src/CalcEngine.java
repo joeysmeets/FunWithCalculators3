@@ -1,7 +1,13 @@
 
+/**
+ * 
+ * @author Joey Smeets and Ruth Wenzel
+ * @version
+ */
+
 public class CalcEngine {
 	// The calculator's state is maintained in three fields:
-    //     buildingDisplayValue, haveLeftOperand, and lastOperator.
+    // buildingDisplayValue, haveLeftOperand, and lastOperator.
     
     // Are we already building a value in the display, or will the
     // next digit be the first of a new one?

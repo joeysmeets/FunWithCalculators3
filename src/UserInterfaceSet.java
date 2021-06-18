@@ -5,6 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Joey Smeets and Ruth Wenzel
+ * @version
+ */
+
 public class UserInterfaceSet implements ActionListener{
 
     private JTextField inputA;
@@ -159,17 +164,17 @@ public class UserInterfaceSet implements ActionListener{
         result.setText("" + calcSet.setResult);
 	}
 	
-	/**
-     * Toggle the info display in the calculator's status area between the
-     * author and version information.
-     */
-    protected void showInfo()
-    {
-        if(showingAuthor)
-            status.setText(calcSet.getVersion());
-        else
-            status.setText(calcSet.getAuthor());
-
-        showingAuthor = !showingAuthor;
-    }
+//	/**
+//     * Toggle the info display in the calculator's status area between the
+//     * author and version information.
+//     */
+//    protected void showInfo()
+//    {
+//        if(showingAuthor)
+//            status.setText(calcSet.getVersion());
+//        else
+//            status.setText(calcSet.getAuthor());
+//
+//        showingAuthor = !showingAuthor;
+//    }
 }
