@@ -1,126 +1,175 @@
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class UserInterfaceSet<E> extends UserInterface {
+public class UserInterfaceSet implements ActionListener{
 
-	JTextField displaySet2;
-	private JTextField displayResult;
-	CalcEngineSet<E> calcSet;
+    private JTextField inputA;
+    private JTextField inputB;
+    private JTextField result;
 
-	public UserInterfaceSet(CalcEngineSet<E> engine) {
-		super(engine);
-		calcSet = new CalcEngineSet<E>();
-	}
+    private CalcEngineSet calcSet;
+    private JButton union, subtraction, intersection, clearAll, sizeA, sizeB, clearA, clearB;
+    private boolean showingAuthor;
+    private JFrame frame;
+    private JLabel status;
 
-	@Override
-	protected void makeFrame() {
-	    {
-	        frame = new JFrame(calc.getTitle());
-	        
-	        JPanel contentPane = (JPanel)frame.getContentPane();
-	        contentPane.setLayout(new BorderLayout(8, 8));
-	        contentPane.setBorder(new EmptyBorder( 10, 10, 10, 10));
-
-	        display = new JTextField();
-	        contentPane.add(display, BorderLayout.NORTH);
-
-	        JPanel buttonPanel = new JPanel(new GridLayout(4, 6));
-	            addButton(buttonPanel, "7");
-	            addButton(buttonPanel, "8");
-	            addButton(buttonPanel, "9");
-	            buttonPanel.add(new JLabel(" "));
-	            addButton(buttonPanel, "+");
-	            addButton(buttonPanel, "del");
-	            
-	            addButton(buttonPanel, "4");
-	            addButton(buttonPanel, "5");
-	            addButton(buttonPanel, "6");
-	            buttonPanel.add(new JLabel(" "));
-	            addButton(buttonPanel, "-");
-	            addButton(buttonPanel, "?");
-	            
-	            addButton(buttonPanel, "1");
-	            addButton(buttonPanel, "2");
-	            addButton(buttonPanel, "3");
-	            buttonPanel.add(new JLabel(" "));
-	            addButton(buttonPanel, "*");
-	            addButton(buttonPanel, "mod");
-	            
-	            addButton(buttonPanel, "0");
-	            buttonPanel.add(new JLabel(" "));
-	            buttonPanel.add(new JLabel(" "));
-	            buttonPanel.add(new JLabel(" "));
-	            addButton(buttonPanel, "/");
-	            addButton(buttonPanel, "=");
-	            
-	        contentPane.add(buttonPanel, BorderLayout.CENTER);
-
-	        status = new JLabel(calc.getAuthor());
-	        contentPane.add(status, BorderLayout.SOUTH);
-
-	        frame.pack();
-	    }
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		{
-	     String command = event.getActionCommand();
-
-	        if(command.equals("0") ||
-	           command.equals("1") ||
-	           command.equals("2") ||
-	           command.equals("3") ||
-	           command.equals("4") ||
-	           command.equals("5") ||
-	           command.equals("6") ||
-	           command.equals("7") ||
-	           command.equals("8") ||
-	           command.equals("9")) {
-	            int number = Integer.parseInt(command);
-	            calc.numberPressed(number);
-	        }
-	        else if(command.equals("+")) {
-	            calc.plus();
-	        }
-	        else if(command.equals("-")) {
-	            calc.minus();
-	        }
-	        else if(command.equals("*")) {
-	            calc.multiply();
-	        }
-	        else if(command.equals("/")) {
-	            calc.divide();
-	        }
-	        else if(command.equals("mod")) {
-	            calc.modulo();
-	        }
-	        else if(command.equals("=")) {
-	            calc.equals();
-	        }
-	        else if(command.equals("del")) {
-	            calc.clear();
-	        }
-	        else if(command.equals("?")) {
-	            showInfo();
-	        }
-	        // else unknown command.
-
-	        redisplay();
-	    }
+    
+	public UserInterfaceSet(CalcEngineSet engine) {
+		calcSet = engine;
+		makeFrame();
+		frame.setVisible(true);
 	}
 	
-	@Override
-	protected void redisplay() {
-		display.setText("" + calc.getDisplayValue());
-	}
+	protected void makeFrame() {
+		frame = new JFrame(calcSet.getTitle());
+//        frame.setMinimumSize(new Dimension(250, 200));
 
+        JPanel contentPane = (JPanel) frame.getContentPane();
+	        contentPane.setLayout(new BorderLayout(2, 2));
+	        contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));        
+        
+        JPanel textPanel = new JPanel(new GridLayout(2, 1));
+	        inputA = new JTextField();
+	        textPanel.add(inputA);
+	        inputB = new JTextField();
+	        textPanel.add(inputB);
+	        contentPane.add(textPanel, BorderLayout.NORTH);
+        
+        JPanel buttonPanel = new JPanel(new GridLayout(2, 4));
+	        addButton(buttonPanel, "Union");
+	        addButton(buttonPanel, "Subtraction");
+	        addButton(buttonPanel, "Intersection");
+	        addButton(buttonPanel, "Clear All");
+	        
+	        addButton(buttonPanel, "Size set A");
+	        addButton(buttonPanel, "Size set B");
+	        addButton(buttonPanel, "Clear A");        
+	        addButton(buttonPanel, "Clear B");
+	        contentPane.add(buttonPanel);
+       
+        result = new JTextField();
+        contentPane.add(result, BorderLayout.SOUTH);
+        
+        status = new JLabel(calcSet.getAuthor());
+        
+        frame.pack();
+	}
+	
+	/**
+     * Add a button to the button panel.
+     * @param panel The panel to receive the button.
+     * @param buttonText The text for the button.
+     */
+    protected void addButton(Container panel, String buttonText)
+    {
+        JButton button = new JButton(buttonText);
+        button.addActionListener(this);
+        panel.add(button); 
+    }
+	
+    
+	public void actionPerformed(ActionEvent event) {
+		String command = event.getActionCommand();
+        
+        if(command.equals("Union")) {
+			try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
+				result.setText(calcSet.union().toString());
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Subtraction")) {
+            try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
+				result.setText(calcSet.subtraction().toString());
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Intersection")) {
+            try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
+				result.setText(calcSet.intersection().toString());
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Clear All")) {
+            try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
+				calcSet.clearAll();
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Size set A")) {
+            try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+				result.setText(calcSet.sizeOfSet(calcSet.setA));
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Size set B")) {
+            try {
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
+				result.setText(calcSet.sizeOfSet(calcSet.setB));
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        if(command.equals("Clear A")) {
+            try {
+				calcSet.clearA();
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+        }
+        if(command.equals("Clear B")) {
+            try {
+				calcSet.clearB();
+			} catch (EmptySetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+        }
+
+        redisplay();
+    }
+	
+	public void redisplay() {
+		inputA.setText("" + calcSet.setA);
+        inputB.setText("" + calcSet.setB);
+        result.setText("" + calcSet.setResult);
+	}
+	
+	/**
+     * Toggle the info display in the calculator's status area between the
+     * author and version information.
+     */
+    protected void showInfo()
+    {
+        if(showingAuthor)
+            status.setText(calcSet.getVersion());
+        else
+            status.setText(calcSet.getAuthor());
+
+        showingAuthor = !showingAuthor;
+    }
 }

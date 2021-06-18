@@ -14,27 +14,29 @@
  */
 public class Calculator
 {
-    private CalcEngine engine;
-    private UserInterface gui;
+    private CalcEngineSet engine;
+    private UserInterfaceSet gui;
 
     /**
      * Create a new calculator and show it.
      */
     public Calculator()
     {
-        //engine = new CalcEngine();
-        //gui = new UserInterface(engine);
-    	engine = new CalcEngineHex();
-        gui = new UserInterfaceHex(engine);
+//        engine = new CalcEngine();
+//        gui = new UserInterface(engine);
+//    	  engine = new CalcEngineHex();
+//        gui = new UserInterfaceHex(engine);
+        engine = new CalcEngineSet();
+        gui = new UserInterfaceSet(engine);
     }
 
-    /**
-     * In case the window was closed, show it again.
-     */
-    public void show()
-    {
-        gui.setVisible(true);
-    }
+//    /**
+//     * In case the window was closed, show it again.
+//     */
+//    public void show()
+//    {
+//        gui.setVisible(true);
+//    }
     
     public static void main(String[] args) {
     	Calculator c = new Calculator();
