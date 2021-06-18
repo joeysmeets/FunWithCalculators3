@@ -143,8 +143,10 @@ public class UserInterfaceSet implements ActionListener{
 				e.printStackTrace();
 			}
         }
-        if(command.equals("Clear A")) {
+        if(command.equals("Clear A")) { 
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				calcSet.clearA();
 			} catch (EmptySetException e) {
 				// TODO Auto-generated catch block
@@ -153,8 +155,10 @@ public class UserInterfaceSet implements ActionListener{
         }
         if(command.equals("Clear B")) {
             try {
+            	calcSet.setA = calcSet.parseStringToSet(inputA.getText());
+            	calcSet.setB = calcSet.parseStringToSet(inputB.getText());
 				calcSet.clearB();
-			} catch (EmptySetException e) {
+			} catch (EmptySetException e) { 
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			};

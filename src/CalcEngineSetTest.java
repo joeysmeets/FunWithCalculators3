@@ -30,8 +30,10 @@ class CalcEngineSetTest {
 
 	@Test
 	void test1() {
-		String setAString = "1,4,6,8";
-		assertEquals(new HashSet<>(Arrays.asList(1,4,6,8)), engine.parseStringToSet(setAString));
+		String setAString = "1,4,6,8"; 
+//		assertEquals(new HashSet<>(Arrays.asList(1,4,6,8)), engine.parseStringToSet(setAString));
+		setA = engine.parseStringToSet(setAString);
+		assertEquals("1, 4, 6, 8", setA.toString().replace("[","").replace("]",""));
 	} 
 	
 	void test2() {

@@ -20,12 +20,7 @@ public class Calculator
     /**
      * Create a new calculator and show it.
      */
-    public Calculator()
-    {
-//        engine = new CalcEngine();
-//        gui = new UserInterface(engine);
-//    	  engine = new CalcEngineHex();
-//        gui = new UserInterfaceHex(engine);
+    public Calculator() {
         engine = new CalcEngineSet();
         gui = new UserInterfaceSet(engine);
     }

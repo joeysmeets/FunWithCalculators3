@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class CalcEngineSet extends CalcEngine {
 	
 	public Set<String> setA = new HashSet<>();
-	public Set<String> setB = new HashSet<>();
+	public Set<String> setB = new HashSet<>(); 
 	public Set<String> setResult = new HashSet<>();
 	
 //	public static void main(String[] args) throws EmptySetException {
@@ -36,7 +36,7 @@ public class CalcEngineSet extends CalcEngine {
 	 */
 	public void setSetA(Set<String> setA) {
 		this.setA = setA;
-	}
+	} 
 	
 	/**
 	 * setter
