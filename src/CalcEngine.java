@@ -36,7 +36,7 @@ public class CalcEngine {
      */
     public int getDisplayValue()
     {
-        return displayValue;
+        return displayValue; 
     }
 
     /**

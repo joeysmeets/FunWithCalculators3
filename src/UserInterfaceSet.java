@@ -103,7 +103,7 @@ public class UserInterfaceSet implements ActionListener{
         }
         if(command.equals("Intersection")) {
         	addTextFieldsToSets();
-        	try {
+        	try { 
 				result.setText(calcSet.intersection().toString());
 			} catch (EmptySetException e) {
 				e.printStackTrace();

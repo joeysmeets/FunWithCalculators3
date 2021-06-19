@@ -9,21 +9,84 @@ import java.util.regex.Pattern;
  */
 public class CalcEngineSet extends CalcEngine {
 	
-	public Set<String> setA = new HashSet<>();
-	public Set<String> setB = new HashSet<>(); 
+	public static Set<String> setA = new HashSet<>();
+	public static Set<String> setB = new HashSet<>(); 
 	public Set<String> setResult = new HashSet<>(); 
 	
-//	public static void main(String[] args) throws EmptySetException {
-//		CalcEngineSet calc = new CalcEngineSet();
-//		setA = calc.parseStringToSet("1,5,7,8,9,11");
-//		System.out.println(setA.toString());
-//		setB = calc.parseStringToSet("3,5,8,12,13,11");
-//		System.out.println(setB.toString()); 
-//		System.out.println("union" + calc.union());
-//		System.out.println("intersection" + calc.intersection());
-//		System.out.println("subtraction" + calc.subtraction());
-//		System.out.println("Size A: " + calc.sizeOfSet(setA));
-//	}
+	public static void main(String[] args) throws EmptySetException {
+		CalcEngineSet calc = new CalcEngineSet();
+		
+		System.out.println("test1:");
+		setA = calc.parseStringToSet("1,5,7,8,9,11");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("--------------------------");
+		
+		System.out.println("test2:");
+		setB = calc.parseStringToSet("3,5,8,12,13,11");
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("--------------------------");
+		
+		System.out.println("test3:");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("union: " + calc.union());
+		System.out.println("--------------------------");
+		
+		System.out.println("test4:");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("intersection: " + calc.intersection());
+		System.out.println("--------------------------");
+		
+		System.out.println("test5:");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("subtraction: " + calc.subtraction()); 
+		System.out.println("--------------------------");
+		
+		System.out.println("test6:");
+		System.out.println("set A: " + setA.toString());
+		calc.GetSizeSetA();
+		System.out.println("Applied getSizeSetA");
+		System.out.println("size A: " + calc.setResult);
+		System.out.println("--------------------------");
+		
+		System.out.println("test7:");
+		System.out.println("set B: " + setB.toString()); 
+		calc.GetSizeSetB();
+		System.out.println("Applied getSizeSetA");
+		System.out.println("size B: " + calc.setResult);
+		System.out.println("--------------------------");
+		
+		System.out.println("test8:");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		calc.clearA();
+		System.out.println("Applied clearA");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("--------------------------");
+		
+		System.out.println("test9:");
+		setA = calc.parseStringToSet("1,5,7,8,9,11");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		calc.clearB();
+		System.out.println("Applied clearB");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("--------------------------");
+		
+		System.out.println("test10:");
+		setB = calc.parseStringToSet("3,5,8,12,13,11");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString());
+		calc.clearAll();
+		System.out.println("Applied clear all");
+		System.out.println("set A: " + setA.toString());
+		System.out.println("set B: " + setB.toString()); 
+		System.out.println("--------------------------");
+	}
 	
 	// Constructor
 	public CalcEngineSet() {
@@ -58,16 +121,16 @@ public class CalcEngineSet extends CalcEngine {
 	 * getter
 	 * @return setA
 	 */
-	public Set<String> getSetA() {
-        return setA;
+	public String getSetA() {
+        return setA.toString();
     }
 	
 	/**
 	 * getter
 	 * @return setB
 	 */
-	public Set<String> getSetB() {
-        return setB;
+	public String getSetB() {
+        return setB.toString();
     }
 	
 	
@@ -75,8 +138,8 @@ public class CalcEngineSet extends CalcEngine {
 	 * getter
 	 * @return setResult
 	 */
-	public Set<String> getSetResult() {
-        return setResult;
+	public String getSetResult() {
+        return setResult.toString();
     }
 	
 	/**
@@ -116,7 +179,6 @@ public class CalcEngineSet extends CalcEngine {
 		 setResult.clear();
 		 
 		 if(setA != null) {
-		    setResult.clear();
 		    setResult.add(String.valueOf(setA.size()));
 		 } else throw new EmptySetException("Set A is empty."); 
 	 }
@@ -129,7 +191,6 @@ public class CalcEngineSet extends CalcEngine {
 		 setResult.clear();
 		 
 		 if(setA != null) {
-		    setResult.clear();
 		    setResult.add(String.valueOf(setB.size()));
 		 } else throw new EmptySetException("Set B is empty."); 
 	 }

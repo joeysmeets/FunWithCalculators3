@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * @author Joey Smeets and Ruth Wenzel
- * @version 
+ * @version 18.06.2021
  */
 
 class CalcEngineSetTest {
@@ -38,19 +38,21 @@ class CalcEngineSetTest {
 	//does not work
 	//assertEquals(new HashSet<>(Arrays.asList(1,4,6,8)), engine.parseStringToSet(setAString));
 
+	// this test works
 	@Test
 	void test1() {
-		String setAString = "1,4,6,8"; 
+		String setAString = "1,5,7,8,9,11"; 
 		setA = engine.parseStringToSet(setAString);
-		assertEquals("1, 4, 6, 8", setA.toString().replace("[","").replace("]",""));
+		assertEquals("11,1,5,7,8,9", setA.toString().replace("[","").replace("]",""));
 	} 
 	
+	// does not work... 
 	void test2() throws EmptySetException {
-		String setAString = "1,4,6,8"; 
-		String setBString = "1,7,9,12"; 
-		setA = engine.parseStringToSet(setAString);
+		String setAString = "1,5,7,8,9,11"; 
+		String setBString = "3,5,8,12,13,11"; 
+		setA = engine.parseStringToSet(setAString); 
 		setB = engine.parseStringToSet(setBString);
-		assertEquals("1, 12, 4, 6, 7, 8, 9", engine.union().toString().replace("[","").replace("]",""));
+		assertEquals("11,1,12,13,3,5,7,8,9", engine.union().toString().replace("[","").replace("]",""));
 	}
 
 }
