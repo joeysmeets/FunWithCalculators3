@@ -11,7 +11,7 @@ public class CalcEngineSet extends CalcEngine {
 	
 	public Set<String> setA = new HashSet<>();
 	public Set<String> setB = new HashSet<>(); 
-	public Set<String> setResult = new HashSet<>();
+	public Set<String> setResult = new HashSet<>(); 
 	
 //	public static void main(String[] args) throws EmptySetException {
 //		CalcEngineSet calc = new CalcEngineSet();
@@ -94,25 +94,53 @@ public class CalcEngineSet extends CalcEngine {
 		return inputSet;
 	}
 	
+//	/**
+//	 * Returns the elements inside of a set.
+//	 * @param a Set
+//	 * @return the amount of elements in a set as a String.
+//	 */
+//	public String sizeOfSet(Set<String> input) throws EmptySetException {
+//		setResult = null;
+//		if (input != null) {
+//			return String.valueOf(input.size());
+//		} else {
+//			throw new EmptySetException("This set is empty.");
+//		}
+//	}
+	
 	/**
-	 * Returns the elements inside of a set.
-	 * @param a Set
-	 * @return the amount of elements in a set as a String.
+	 * Returns the size of set A.
+	 * @throws EmptySetException 
 	 */
-	public String sizeOfSet(Set<String> input) throws EmptySetException {
-		setResult = null;
-		if (input != null) {
-			return String.valueOf(input.size());
-		} else {
-			throw new EmptySetException("This set is empty.");
-		}
-	}
+	 public void GetSizeSetA() throws EmptySetException {
+		 setResult.clear();
+		 
+		 if(setA != null) {
+		    setResult.clear();
+		    setResult.add(String.valueOf(setA.size()));
+		 } else throw new EmptySetException("Set A is empty."); 
+	 }
+	 
+	 /**
+	  * Returns the size of set B.
+	  * @throws EmptySetException 
+	  */
+	 public void GetSizeSetB() throws EmptySetException {
+		 setResult.clear();
+		 
+		 if(setA != null) {
+		    setResult.clear();
+		    setResult.add(String.valueOf(setB.size()));
+		 } else throw new EmptySetException("Set B is empty."); 
+	 }
 	
 	/**
 	 * Clears set A.
 	 * @throws EmptySetException 
 	 */
 	public void clearA() throws EmptySetException {
+		setResult.clear();
+		
 		if (setA != null) {
 			setA.clear();
 		} else {
@@ -125,10 +153,12 @@ public class CalcEngineSet extends CalcEngine {
 	 * @throws EmptySetException 
 	 */
 	public void clearB() throws EmptySetException {
+		setResult.clear();
+		
 		if (setB != null) {
 			setB.clear();
 		} else {
-			throw new EmptySetException("All sets are empty, nothing to be emptied.");
+			throw new EmptySetException("Set B is empty."); 
 		}
 	}
 	
@@ -191,7 +221,7 @@ public class CalcEngineSet extends CalcEngine {
 	}
 	
 	/**
-	 * Checks for the martching values and puts them in the return set. 
+	 * Checks for the matching values and puts them in the return set. 
 	 * @return setResult
 	 * @throws EmptySetException 
 	 */

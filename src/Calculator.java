@@ -23,7 +23,7 @@ public class Calculator
     public Calculator() {
         engine = new CalcEngineSet();
         gui = new UserInterfaceSet(engine);
-    }
+    } 
 
 //    /**
 //     * In case the window was closed, show it again.
