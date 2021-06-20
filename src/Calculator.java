@@ -10,7 +10,7 @@
  * @version 27.05.2021
  * 
  * @author Joey Smeets and Ruth Wenzel
- * @version 
+ * @version 18.06.2021
  */
 public class Calculator
 {
@@ -20,15 +20,10 @@ public class Calculator
     /**
      * Create a new calculator and show it.
      */
-    public Calculator()
-    {
-//        engine = new CalcEngine();
-//        gui = new UserInterface(engine);
-//    	  engine = new CalcEngineHex();
-//        gui = new UserInterfaceHex(engine);
+    public Calculator() {
         engine = new CalcEngineSet();
         gui = new UserInterfaceSet(engine);
-    }
+    } 
 
 //    /**
 //     * In case the window was closed, show it again.

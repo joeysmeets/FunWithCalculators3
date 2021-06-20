@@ -1,6 +1,5 @@
 
 /**
- * 
  * @author Joey Smeets and Ruth Wenzel
  * @version
  */
@@ -36,7 +35,7 @@ public class CalcEngine {
      */
     public int getDisplayValue()
     {
-        return displayValue;
+        return displayValue; 
     }
 
     /**
@@ -245,5 +244,4 @@ public class CalcEngine {
         // Reset everything.
         clear();
     }
-
 }
