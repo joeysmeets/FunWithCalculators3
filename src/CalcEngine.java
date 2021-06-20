@@ -1,7 +1,7 @@
 
 /**
  * @author Joey Smeets and Ruth Wenzel
- * @version
+ * @version 20.08.2021
  */
 
 public class CalcEngine {

@@ -80,8 +80,7 @@ public class UserInterfaceSet implements ActionListener{
     /**
      * Takes care of the commands with the according method call. 
      * @param event (button pressed in this case).
-     * @throws EmptySetException - if a command was called while 
-     * 		the required sets are not filled, this exception is thrown.
+     * @throws EmptySetException - if a command was called while the required sets are not filled, this exception is thrown.
      */
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
